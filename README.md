@@ -118,7 +118,7 @@ Further assumptions:
 * It is **order of growth** of the running time that really interests us. We consider only the leading term of a formula, e.g. $an^2$, since the lower-order terms are relatively insignificant for large values of $n$.
 * We also ignore the leading's term constant coefficient, since constant factors are less significant that the rate of growth in determining computational efficiency for large inputs.
 
-We write that **the insertion sort has the worst-case running time of $O(n^2)$**.
+We write that **the insertion sort has the worst-case running time (time complexity) of $O(n^2)$**.
 
 For large enough inputs, a $O(n^2)$ algorithm, for example, will run more quickly in the worst case than a $O(n^3)$ algorithm.
 
@@ -130,3 +130,58 @@ Express the function $n^3 - 100n^2 - 100n + 3$ in terms of $O$-notation.
 $$n^3 - 100n^2 - 100n + 3 = O(n^3)$$
 
 </details>
+
+## Exercises
+
+### Exercise 1.
+
+What is the time complexity for the following program?
+
+```go
+func sum(a, b int) int {
+  return a + b
+}
+```
+
+<details>
+<summary>Answer</summary>
+
+The running time is constant. Therefore, the time complexity is $O(1)$.
+
+</details>
+
+### Exercise 2.
+
+What is the time complexity for the following program?
+
+```go
+func sum(l []int) int {
+  total := 0
+  for _, el := range l {
+    total += el
+  }
+  return total
+}
+```
+
+<details>
+<summary>Answer</summary>
+
+Assuming $n = $`len(l)`, the running time is linear, i.e. $T(n) = an + b$.
+Therefore, the time complexity is $O(n)$, where $n = $ `len(l)`.
+
+</details>
+
+### Exercise 4.
+
+What is the time complexity for the following program?
+
+```go
+func sum(m [][]int) int {
+  total := 0
+  for i := range m {
+    for j := range 
+  }
+  return total
+}
+```
