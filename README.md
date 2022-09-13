@@ -131,6 +131,74 @@ $$n^3 - 100n^2 - 100n + 3 = O(n^3)$$
 
 </details>
 
+## Comparing time complexities
+
+![](https://miro.medium.com/max/700/1*FkQzWqqIMlAHZ_xNrEPKeA.png)
+
+## Rules
+
+1. Different steps get added:
+
+   ```go
+   func something() {
+     doStep1() // O(a)
+     doStep2() // O(b)
+   } // O(a + b)
+   ```
+
+2. Drop constants:
+
+   ```go
+   func minMax1(arr []int) (min int, max int) {
+    for _, el := range arr {
+      min = math.Min(el, min)
+    } // O(n)
+    for _, el := range arr {
+      max = math.Max(el, max)
+    } // O(n)
+   } // O(2n) = O(n)
+
+   func minMax2(arr []int) (min int, max int) {
+     for _, el := range arr {
+       min = math.Min(el, min)
+       max = math.Max(el, max)
+     } // O(n)
+   } // O(n)
+   ```
+
+3. Different inputs -> different variables
+
+   ```go
+   func intersectionSize(a, b []int) int {
+     count := 0
+     for _, el1 := range a {
+       for _, el2 := range b {
+         if el1 == el2 {
+           count++
+         }
+       }
+     }
+     return count
+   } // O(mn), where m is the size of m, and n is the size of b.
+   ```
+
+4. Drop non-dominant terms
+
+   ```go
+   func f(arr []int) {
+     max := 0
+     for _, el := arr {
+       max = math.Max(el, max)
+     } // O(n)
+     fmt.Println(max)
+     for _, el := arr {
+       for _, el := arr {
+         fmt.Println(a, b)
+       }
+     } // O(n^2)
+   } // O(n) + O(n^2) = O(n + n^2) = O(n^2)
+   ```
+
 ## Exercises
 
 ### Exercise 1.
@@ -168,7 +236,7 @@ func sum(l []int) int {
 <summary>Answer</summary>
 
 Assuming $n = $`len(l)`, the running time is linear, i.e. $T(n) = an + b$.
-Therefore, the time complexity is $O(n)$, where $n = $ `len(l)`.
+Therefore, the time complexity is $O(n)$.
 
 </details>
 
@@ -177,11 +245,72 @@ Therefore, the time complexity is $O(n)$, where $n = $ `len(l)`.
 What is the time complexity for the following program?
 
 ```go
-func sum(m [][]int) int {
+func sum(a [][]int) int {
   total := 0
-  for i := range m {
-    for j := range 
+  for i := range a {
+    for j := range a[i] {
+      total += a[i][j]
+    }
   }
   return total
 }
 ```
+
+<details>
+<summary>Answer</summary>
+
+Assuming the input matrix has dimensions $m \times n$, the running time is $T(m, n) = a\cdot m \cdot n + b$. Therefore, the time complexity is $O(mn)$.
+
+</details>
+
+### Example 5.
+
+What is the time complexity for the following program?
+
+```go
+func f(n int) int {
+  a := 5
+  for i := 0; i < n; i++ {
+    a++
+  }
+  for i := 0; i < n; i++ {
+    for j := 0; j < n; j++ {
+      a++
+    }
+ }
+ return a
+}
+```
+
+<details>
+<summary>Answer</summary>
+
+The first loop has the time complexity $O(n)$. The second loop has the time complexity $O(n^2)$. The resulting complexity is $O(n) + O(n^2)= O(n^2)$.
+
+</details>
+
+### Example 6.
+
+What is the time complexity for the following program?
+
+```go
+func isPowerOfTwo(n int) bool {
+  if n == 0 {
+    return false
+  }
+  for n != 1 {
+    if n % 2 != 0 {
+      return false
+    }
+    n /= 2
+  }
+  return true
+}
+```
+
+<details>
+<summary>Answer</summary>
+
+The time complexity is $O(\log_2 n)$. This is because at every step we divide $n$ by $2$.
+
+</details>
