@@ -198,3 +198,25 @@ $$n^3 - 100n^2 - 100n + 3 = O(n^3)$$
      } // O(n^2)
    } // O(n) + O(n^2) = O(n + n^2) = O(n^2)
    ```
+
+## Other complexities: $O(\sqrt n), O(\log n), O(2^n), O(n!)$
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Comparison_computational_complexity.svg/512px-Comparison_computational_complexity.svg.png?20170623110746)
+
+### Basic asymptotic efficiency classes
+
+| Class | Name | Comments |
+|-------|------|----------|
+| $O(1)$   | constant | Short of best-case efficiencies, very few reasonable examples can be given since an algorithm’s running time typically goes to infinity when its input size grows infinitely large.|
+| $O(\log n)$ | logarithmic | Typically, a result of cutting a problem’s size by a constant factor on each iteration of the algorithm. Note that a logarithmic algorithm cannot take into account all its input or even a fixed fraction of it: any algorithm that does so will have at least linear running time. |
+| $O(\sqrt n)$ | root | Example: find divisors |
+| $O(n)$ | linear | Algorithms that scan a list of size n (e.g., sequential search) belong to this class. |
+| $O(n \log n)$ | linearithmic | Many divide-and-conquer algorithms, including mergesort and quicksort in the average case fall into this category. |
+| $O(n^2)$ | quadratic | Typically, characterizes efficiency of algorithms with two embedded loops. Elementary sorting algorithms and certain operations on $n \times n$ matrices are standard examples. |
+| $O(n^3)$ | cubic | Typically, characterizes efficiency of algorithms with three embedded loops. Several nontrivial algorithms from linear algebra fall into this class. |
+| $(2^n)$ | exponential | Typical for algorithms that generate all subsets of an $n$-element set. Often, the term “exponential” is used in a broader sense to include this and larger orders of growth as well. |
+| $(n!)$ | factorial | Typical for algorithms that generate all permutations of an $n$-element set. |
+
+## Complexity of sorting algorithms
+
+https://www.bigocheatsheet.com/
