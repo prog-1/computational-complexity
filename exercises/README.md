@@ -11,7 +11,7 @@
 ### Points
 
 - 100% for time complexity `O(N)`, space complexity `O(1)` (no allocations) 
-- Any other implementation extra 50%.
+- Any other implementation 50%.
 
 ### Prototype
 
